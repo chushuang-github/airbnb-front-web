@@ -4,7 +4,7 @@ import SectionHeader from '@/components/section-header'
 import SectionRooms from '@/components/section-rooms'
 import { SectionV1Wrapper } from './style'
 
-const HomeSection = memo((props) => {
+const HomeSectionV1 = memo((props) => {
   const { infoData } = props
   return (
     <SectionV1Wrapper>
@@ -14,8 +14,8 @@ const HomeSection = memo((props) => {
   )
 })
 
-HomeSection.propTypes = {
+HomeSectionV1.propTypes = {
   infoData: PropTypes.object
 }
 
-export default HomeSection
+export default HomeSectionV1

@@ -20,3 +20,10 @@ export function getHomeDiscountData() {
     url: "/home/discount"
   })
 }
+
+// 精彩之地
+export function getHomeHotRecommend() {
+  return hyRequest.get({
+    url: "/home/hotrecommenddest"
+  })
+}

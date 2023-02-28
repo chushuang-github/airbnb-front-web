@@ -4,14 +4,14 @@ import { fetchHomeDataAction } from '@/store/modules/home'
 import { HomeWrapper } from './style'
 import HomeBanner from './c-cpns/home-banner'
 import HomeSectionV1 from './c-cpns/home-section-v1'
-
-import SectionHeader from '@/components/section-header'
-import SectionRooms from '@/components/section-rooms'
+import HomeSectionV2 from './c-cpns/home-section-v2'
+import { isEmptyObject } from '@/utils/is-empty-object'
 
 const Home = memo(() => {
   const dispatch = useDispatch()
-  const { discountInfo, goodPriceInfo, highScoreInfo } = useSelector(state => ({
+  const { discountInfo, recommendInfo, goodPriceInfo, highScoreInfo } = useSelector(state => ({
     discountInfo: state.home.discountInfo,
+    recommendInfo: state.home.recommendInfo,
     goodPriceInfo: state.home.goodPriceInfo,
     highScoreInfo: state.home.highScoreInfo
   }), shallowEqual)
@@ -25,14 +25,16 @@ const Home = memo(() => {
       <HomeBanner />
       <div className='content'>
         {/* 热门目的地 */}
-        <div className='discount'>
-          <SectionHeader title={discountInfo.title} subtitle={discountInfo.subtitle} />
-          <SectionRooms roomList={discountInfo?.dest_list?.['成都']} itemWidth="33.3333%" />
-        </div>
+        { isEmptyObject(discountInfo) && <HomeSectionV2 infoData={discountInfo} /> }
+
+        {/* 精彩之地 */}
+        { isEmptyObject(recommendInfo) && <HomeSectionV2 infoData={recommendInfo} /> }
+
         {/* 高性价比房源 */}
-        <HomeSectionV1 infoData={goodPriceInfo} />
+        { isEmptyObject(goodPriceInfo) && <HomeSectionV1 infoData={goodPriceInfo} /> }
+
         {/* 高分好评房源 */}
-        <HomeSectionV1 infoData={highScoreInfo} />
+        { isEmptyObject(highScoreInfo) && <HomeSectionV1 infoData={highScoreInfo} /> }
       </div>
     </HomeWrapper>
   )
