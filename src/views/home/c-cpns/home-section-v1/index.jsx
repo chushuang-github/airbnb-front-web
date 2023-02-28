@@ -2,6 +2,7 @@ import PropTypes from 'prop-types'
 import React, { memo } from 'react'
 import SectionHeader from '@/components/section-header'
 import SectionRooms from '@/components/section-rooms'
+import SectionFooter from '@/components/section-footer'
 import { SectionV1Wrapper } from './style'
 
 const HomeSectionV1 = memo((props) => {
@@ -10,6 +11,7 @@ const HomeSectionV1 = memo((props) => {
     <SectionV1Wrapper>
       <SectionHeader title={infoData.title} subtitle={infoData.subtitle} />
       <SectionRooms roomList={infoData.list} itemWidth="25%" />
+      <SectionFooter />
     </SectionV1Wrapper>
   )
 })
