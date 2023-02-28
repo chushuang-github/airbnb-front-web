@@ -52,14 +52,19 @@ export const ItemWrapper = styled.div`
     align-items: center;
     font-size: 12px;
     font-weight: 600;
-    color: ${props => props.theme.color.textColor};
+    color: ${props => props.theme.text.primaryColor};
 
     .count {
       margin: 0 2px 0 4px;
     }
 
-    .MuiRating-decimal {
-      margin-right: -3px;
+    .count, .extra {
+      position: relative;
+      top: 1px;
+    }
+
+    .ant-rate .ant-rate-star:not(:last-child) {
+      margin-right: 3px;
     }
   }
 `
