@@ -2,6 +2,8 @@ import styled from "styled-components";
 
 export const ScorllViewWrapper = styled.div`
   position: relative;
+  padding: 8px 0px;
+
   .scroll {
     overflow: hidden;
     .scroll-content {
