@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types'
 import React, { memo, useState } from 'react'
 import classNames from 'classnames'
+import ScrollView from '@/base-ui/scroll-view'
 import { TabsWrapper } from './style'
 
 const SectionTabs = memo((props) => {
@@ -14,19 +15,21 @@ const SectionTabs = memo((props) => {
 
   return (
     <TabsWrapper>
-      {
-        tabNames.map((item, index) => {
-          return (
-            <div 
-              className={classNames("item", { active: currentIndex === index })} 
-              key={item} 
-              onClick={() => itemClickHandle(item, index)}
-            >
-              { item }
-            </div>
-          )
-        })
-      }
+      <ScrollView>
+        {
+          tabNames.map((item, index) => {
+            return (
+              <div 
+                className={classNames("item", { active: currentIndex === index })} 
+                key={item} 
+                onClick={() => itemClickHandle(item, index)}
+              >
+                { item }
+              </div>
+            )
+          })
+        }
+      </ScrollView>
     </TabsWrapper>
   )
 })
