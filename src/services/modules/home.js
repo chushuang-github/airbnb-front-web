@@ -22,8 +22,15 @@ export function getHomeDiscountData() {
 }
 
 // 精彩之地
-export function getHomeHotRecommend() {
+export function getHomeHotRecommendData() {
   return hyRequest.get({
     url: "/home/hotrecommenddest"
+  })
+}
+
+// 你可能想去
+export function getHomeLongForData() {
+  return hyRequest.get({
+    url: "/home/longfor"
   })
 }

@@ -5,15 +5,23 @@ import { HomeWrapper } from './style'
 import HomeBanner from './c-cpns/home-banner'
 import HomeSectionV1 from './c-cpns/home-section-v1'
 import HomeSectionV2 from './c-cpns/home-section-v2'
+import HomeLongfor from './c-cpns/home-longfor'
 import { isEmptyObject } from '@/utils/is-empty-object'
 
 const Home = memo(() => {
   const dispatch = useDispatch()
-  const { discountInfo, recommendInfo, goodPriceInfo, highScoreInfo } = useSelector(state => ({
+  const { 
+    discountInfo, 
+    recommendInfo, 
+    goodPriceInfo, 
+    highScoreInfo, 
+    longforInfo 
+  } = useSelector(state => ({
     discountInfo: state.home.discountInfo,
     recommendInfo: state.home.recommendInfo,
     goodPriceInfo: state.home.goodPriceInfo,
-    highScoreInfo: state.home.highScoreInfo
+    highScoreInfo: state.home.highScoreInfo,
+    longforInfo: state.home.longforInfo
   }), shallowEqual)
 
   useEffect(() => {
@@ -29,6 +37,9 @@ const Home = memo(() => {
 
         {/* 精彩之地 */}
         { isEmptyObject(recommendInfo) && <HomeSectionV2 infoData={recommendInfo} /> }
+
+        {/* 你可能想去 */}
+        { isEmptyObject(longforInfo) && <HomeLongfor infoData={longforInfo} /> }
 
         {/* 高性价比房源 */}
         { isEmptyObject(goodPriceInfo) && <HomeSectionV1 infoData={goodPriceInfo} /> }
