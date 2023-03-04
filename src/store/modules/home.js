@@ -4,7 +4,8 @@ import {
   getHomeHighScoreData, 
   getHomeDiscountData, 
   getHomeHotRecommendData,
-  getHomeLongForData
+  getHomeLongForData,
+  getHomePlusData
 } from "@/services"
 
 const homeSlice = createSlice({
@@ -14,7 +15,8 @@ const homeSlice = createSlice({
     highScoreInfo: {},
     discountInfo: {},
     recommendInfo: {},
-    longforInfo: {}
+    longforInfo: {},
+    plusInfo: {}
   },
   reducers: {
     changeGoodPriceInfoAction(state, { payload }) {
@@ -31,6 +33,9 @@ const homeSlice = createSlice({
     },
     changeLongForInfoAction(state, { payload }){
       state.longforInfo = payload
+    },
+    changePlusInfoAction(state, { payload }) {
+      state.plusInfo = payload
     }
   }
 })
@@ -41,7 +46,8 @@ const {
   changeHighScoreInfoAction, 
   changeDiscountInfoAction, 
   changeRecommendInfoAction,
-  changeLongForInfoAction
+  changeLongForInfoAction,
+  changePlusInfoAction
 } = homeSlice.actions
 
 // 异步action
@@ -65,6 +71,10 @@ const fetchHomeDataAction = createAsyncThunk("fetchData", (payload, store) => {
   // 你可能想去
   getHomeLongForData().then(res => {
     store.dispatch(changeLongForInfoAction(res))
+  })
+  // plus房源
+  getHomePlusData().then(res => {
+    store.dispatch(changePlusInfoAction(res))
   })
 })
 
