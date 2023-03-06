@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types'
 import React, { memo } from 'react'
 import SectionHeader from '@/components/section-header'
+import SectionFooter from '@/components/section-footer'
 import ScrollView from '@/base-ui/scroll-view'
 import RoomItem from '@/components/room-item'
 import { SectionV3Wrapper } from './style'
@@ -20,6 +21,7 @@ const HomeSectionV3 = memo((props) => {
           }
         </ScrollView>
       </div>
+      <SectionFooter name="plus" />
     </SectionV3Wrapper>
   )
 })
