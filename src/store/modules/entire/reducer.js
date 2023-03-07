@@ -1,9 +1,10 @@
 import * as actionTypes from './constants'
 
 const initialState = {
-  currentPage: 0,
+  currentPage: 1,
   totalCount: 0,
-  roomList: []
+  roomList: [],
+  isLoading: false
 }
 
 function reducer(state = initialState, action) {
@@ -14,6 +15,8 @@ function reducer(state = initialState, action) {
       return { ...state, totalCount: action.totalCount }
     case actionTypes.CHANGE_ROOM_LIST:
       return { ...state, roomList: action.roomList }
+    case actionTypes.CHANGE_IS_LOADING:
+      return { ...state, isLoading: action.isLoading }
     default:
       return state
   }
