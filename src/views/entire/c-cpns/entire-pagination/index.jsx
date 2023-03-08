@@ -30,7 +30,7 @@ const EntirePagination = memo(() => {
         onChange={handlePageChange} 
       />
       <div className='info'>
-        第 {start} – {end} 个房源，共超过 {totalCount} 个
+        第 {start} ~ {end} 个房源，一共 {totalCount} 个房源
       </div>
     </PaginationWrapper>
   )
