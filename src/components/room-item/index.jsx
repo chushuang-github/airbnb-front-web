@@ -8,12 +8,13 @@ import IconArrowRight from '@/assets/svg/icon-arrow-right'
 import Indicator from '@/base-ui/indicator'
 
 const RoomItem = memo((props) => {
-  const { itemData, itemWidth = "25%" } = props
+  const { itemData, itemWidth = "25%", itemClick } = props
   const [selectIndex, setSelectIndex] = useState(0)
 
   // 点击轮播图的左右按钮
   const swiperRef = useRef()
-  const handleBtnClick = (isRight = true) => {
+  const handleBtnClick = (isRight = true, event) => {
+    event.stopPropagation()
     isRight ? swiperRef.current.next() : swiperRef.current.prev()
   }
 
@@ -27,6 +28,11 @@ const RoomItem = memo((props) => {
     swiperRef.current.goTo(index, false)
   }
 
+  // 点击跳转
+  const itemClickHandle = () => {
+    itemClick && itemClick(itemData)
+  }
+
   // 图片
   const pictureElement = (
     <div className='cover'>
@@ -38,10 +44,10 @@ const RoomItem = memo((props) => {
   const swiperElement = (
     <div className='swiper'>
       <div className='control'>
-        <div className='btn left' onClick={() => handleBtnClick(false)}>
+        <div className='btn left' onClick={(e) => handleBtnClick(false, e)}>
           <IconArrowLeft width={25}  height={25} />
         </div>
-        <div className='btn right' onClick={() => handleBtnClick(true)}>
+        <div className='btn right' onClick={(e) => handleBtnClick(true, e)}>
           <IconArrowRight width={25}  height={25} />
         </div>
       </div>
@@ -79,6 +85,7 @@ const RoomItem = memo((props) => {
     <ItemWrapper 
       verifyColor={itemData?.verify_info?.text_color || "#39576a"}
       itemWidth={itemWidth}
+      onClick={() => itemClickHandle()}
     >
       <div className='inner'>
         {
