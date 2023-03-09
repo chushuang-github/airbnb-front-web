@@ -1,6 +1,6 @@
 import React, { memo } from 'react'
 import { useLocation } from 'react-router-dom'
-import HousePicture from './c-cpns/house-picture'
+import DetailPicture from './c-cpns/detail-picture'
 import { DetailWrapper } from './style'
 
 const Detail = memo(() => {
@@ -9,7 +9,7 @@ const Detail = memo(() => {
 
   return (
     <DetailWrapper>
-      <HousePicture picturesData={detailInfo.picture_urls}/>
+      <DetailPicture picturesData={detailInfo.picture_urls}/>
     </DetailWrapper>
   )
 })

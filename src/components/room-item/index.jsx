@@ -24,7 +24,8 @@ const RoomItem = memo((props) => {
   }
 
   // 点击轮播的指示器
-  const handleDotClick = (index) => {
+  const handleDotClick = (index, event) => {
+    event.stopPropagation()
     swiperRef.current.goTo(index, false)
   }
 
@@ -59,7 +60,7 @@ const RoomItem = memo((props) => {
                 <div className='item' key={item}>
                   <span 
                     className={classNames('dot', { active: selectIndex === index })}
-                    onClick={() => handleDotClick(index)}
+                    onClick={(e) => handleDotClick(index, e)}
                   ></span>
                 </div>
               )
