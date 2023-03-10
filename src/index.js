@@ -13,14 +13,15 @@ import '@/assets/css/index.less'
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <Suspense fallback="loading...">
-    <Provider store={store}>
+  // 注意：Suspense 组件必须要放在 Provider 里面 (不然会出现一些莫名其妙的问题)
+  <Provider store={store}>
+    <Suspense fallback="loading...">
       {/* 使用 styled-components 提供的 ThemeProvider 进行自定义主题 */}
       <ThemeProvider theme={theme}>
         <BrowserRouter>
           <App />
         </BrowserRouter>
       </ThemeProvider>
-    </Provider>
-  </Suspense>
+    </Suspense>
+  </Provider>
 );

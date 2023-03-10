@@ -1,10 +1,12 @@
 import { configureStore } from "@reduxjs/toolkit"
+import mainReducer from "./modules/main"
 import homeReducer from "./modules/home"
 import entireReducer from "./modules/entire"
 
 const store = configureStore({
   reducer: {
     // 通过 @reduxjs/toolkit 定义的
+    main: mainReducer,
     home: homeReducer,
     // 通过普通的 redux 的方式定义的
     entire: entireReducer

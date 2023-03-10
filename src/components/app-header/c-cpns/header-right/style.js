@@ -19,6 +19,7 @@ export const RightWrapper = styled.div`
   .btns {
     display: flex;
     align-items: center;
+    color: ${props => props.theme.isOpacity ? "#fff" : "#000"};
 
     .btn {
       height: 18px;
@@ -28,7 +29,7 @@ export const RightWrapper = styled.div`
       border-radius: 22px;
 
       &:hover {
-        background-color: #f5f5f5;
+        background-color: ${props => props.theme.isOpacity ? "rgba(255, 255, 255, .2)" : "#f5f5f5"};
       }
     }
   }
